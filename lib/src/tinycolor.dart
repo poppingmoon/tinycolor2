@@ -2,7 +2,6 @@ import 'dart:math' as Math;
 import 'dart:ui';
 
 import 'package:flutter/painting.dart';
-import 'package:meta/meta.dart';
 import 'package:pigment/pigment.dart';
 
 import 'conversion.dart';
@@ -13,18 +12,15 @@ export 'hsl_color.dart';
 export 'color_extension.dart';
 
 class TinyColor {
-  Color originalColor;
+  final Color originalColor;
   Color _color;
 
-  TinyColor(Color color) {
-    this.originalColor =
-        Color.fromARGB(color.alpha, color.red, color.green, color.blue);
-    this._color =
-        Color.fromARGB(color.alpha, color.red, color.green, color.blue);
-  }
+  TinyColor(Color color)
+      : this.originalColor = color,
+        _color = color.clone();
 
   factory TinyColor.fromRGB(
-      {@required int r, @required int g, @required int b, int a = 100}) {
+      {required int r, required int g, required int b, int a = 100}) {
     return TinyColor(Color.fromARGB(a, r, g, b));
   }
 
@@ -144,7 +140,7 @@ class TinyColor {
     return TinyColor.fromHSL(hsl);
   }
 
-  TinyColor mix({@required Color input, int amount = 50}) {
+  TinyColor mix({required Color input, int amount = 50}) {
     final p = amount / 100.0;
     final color = Color.fromARGB(
         ((input.alpha - _color.alpha) * p + _color.alpha).round(),
@@ -166,14 +162,20 @@ class TinyColor {
 
   @override
   bool operator ==(Object other) =>
-    identical(this, other) ||
-    other is TinyColor &&
-    runtimeType == other.runtimeType &&
-    color == other.color;
+      identical(this, other) ||
+      other is TinyColor &&
+          runtimeType == other.runtimeType &&
+          color == other.color;
 
   @override
   int get hashCode => color.hashCode;
 
   @Deprecated('Use == instead.')
   bool equals(Object other) => this == other;
+}
+
+extension _ on Color {
+  Color clone() {
+    return Color.fromARGB(alpha, red, green, blue);
+  }
 }
