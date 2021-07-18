@@ -18,15 +18,15 @@ Now you can also use the package to extend the native Color class with all the s
 
 The package uses [Pigment](https://pub.dartlang.org/packages/pigment) by [Bregy Malpartida Ramos](https://github.com/bregydoc/) to convert strings to `Color`
 
-````dart
+```dart
 TinyColor.fromString('#FE5567');
-````
+```
 
 ### From RGB int values
 
-````dart
+```dart
 TinyColor.fromRGB(r: 255, g: 255, b:255);
-````
+```
 
 ### From HSL color
 
