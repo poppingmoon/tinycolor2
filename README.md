@@ -1,4 +1,4 @@
-# tinycolor
+# tinycolor2
 > TinyColor is a small library for Flutter color manipulation and conversion
 
 A port of [tinycolor2](https://github.com/bgrins/TinyColor) by [Brian Grinstead](https://github.com/bgrins)
