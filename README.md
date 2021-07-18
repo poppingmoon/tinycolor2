@@ -5,10 +5,10 @@ A port of [tinycolor2](https://github.com/bgrins/TinyColor) by [Brian Grinstead]
 
 ## Getting Started
 
-A tinycolor receives a `Color` as parameter.
+A `TinyColor` receives a `Color` as parameter.
 
 ```dart
-import 'package:tinycolor/tinycolor.dart';
+import 'package:tinycolor2/tinycolor2.dart';
 
 final TinyColor = TinyColor(Colors.green);
 ```
