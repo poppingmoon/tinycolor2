@@ -117,7 +117,7 @@ Colors.red.lighten().desaturate();
 
 ### setAlpha
 
-Sets the alpha value on the current color.
+Sets the alpha value on the current color, from `0` to `100`.
 
 ```dart
 TinyColor(Colors.red).setAlpha(10);
@@ -125,7 +125,7 @@ TinyColor(Colors.red).setAlpha(10);
 
 ### setOpacity
 
-Sets the opacity value on the current color.
+Sets the opacity value on the current color, from `0.0` to `1.0`.
 
 ```dart
 TinyColor(Colors.red).setOpacity(0.5);
