@@ -62,7 +62,7 @@ final Color color = TinyColor(Colors.white).color;
 
 ### getBrightness
 
-Returns the perceived brightness of a color, from `0-255`, as defined by [Web Content Accessibility Guidelines (Version 1.0)](http://www.w3.org/TR/AERT#color-contrast).
+Returns the perceived brightness of a color, from `0` to `255`, as defined by [Web Content Accessibility Guidelines (Version 1.0)](http://www.w3.org/TR/AERT#color-contrast).
 
 ```dart
 TinyColor.fromString("#ffffff").getBrightness(); // 255
@@ -131,7 +131,7 @@ Colors.red.lighten().desaturate();
 
 ### lighten
 
-`lighten: function(amount = 10) -> TinyColor`. Lighten the color a given amount, from 0 to 100. Providing 100 will always return white.
+`lighten: function(amount = 10) -> TinyColor`. Lighten the color a given amount, from `0` to `100`. Providing `100` will always return white.
 
 ```dart
 TinyColor(Colors.red).lighten().color;
@@ -142,7 +142,7 @@ Colors.red.lighten(50);
 
 ### brighten
 
-`brighten: function(amount = 10) -> TinyColor`. Brighten the color a given amount, from 0 to 100.
+`brighten: function(amount = 10) -> TinyColor`. Brighten the color a given amount, from `0` to `100`.
 
 ```dart
 TinyColor(Colors.black).brighten().color;
@@ -152,7 +152,7 @@ Colors.black.brighten(50);
 
 ### darken
 
-`darken: function(amount = 10) -> TinyColor`. Darken the color a given amount, from 0 to 100. Providing 100 will always return black.
+`darken: function(amount = 10) -> TinyColor`. Darken the color a given amount, from `0` to `100`. Providing `100` will always return black.
 
 ```dart
 TinyColor(Colors.red).darken().color;
@@ -163,7 +163,7 @@ Colors.red.darken(50);
 
 ### tint
 
-Mix the color with pure white, from 0 to 100. Providing 0 will do nothing, providing 100 will always return white.
+Mix the color with pure white, from `0` to `100`. Providing `0` will do nothing, providing `100` will always return white.
 
 ```dart
 TinyColor(Color.red).tint().color;
@@ -174,7 +174,7 @@ Colors.red.tint(50);
 
 ### shade
 
-Mix the color with pure black, from 0 to 100. Providing 0 will do nothing, providing 100 will always return black.
+Mix the color with pure black, from `0` to `100`. Providing `0` will do nothing, providing `100` will always return black.
 
 ```dart
 TinyColor(Colors.red).shade().color;
@@ -185,7 +185,7 @@ Colors.red.shade(50);
 
 ### desaturate
 
-`desaturate: function(amount = 10) -> TinyColor`. Desaturate the color a given amount, from 0 to 100. Providing 100 will is the same as calling `greyscale`.
+`desaturate: function(amount = 10) -> TinyColor`. Desaturate the color a given amount, from `0` to `100`. Providing `100` will is the same as calling `greyscale`.
 
 ```dart
 TinyColor(Colors.red).desaturate().color;
@@ -196,7 +196,7 @@ Colors.red.desaturate(50);
 
 ### saturate
 
-`saturate: function(amount = 10) -> TinyColor`. Saturate the color a given amount, from 0 to 100.
+`saturate: function(amount = 10) -> TinyColor`. Saturate the color a given amount, from `0` to `100`.
 
 ```dart
 TinyColor(Colors.red).saturate().color;
@@ -216,7 +216,7 @@ Colors.red.greyscale;
 
 ### spin
 
-`spin: function(amount = 0) -> TinyColor`. Spin the hue a given amount, from -360 to 360. Calling with 0, 360, or -360 will do nothing (since it sets the hue back to what it was before).
+`spin: function(amount = 0) -> TinyColor`. Spin the hue a given amount, from `-360` to `360`. Calling with `0`, `360`, or `-360` will do nothing (since it sets the hue back to what it was before).
 
 ```dart
 TinyColor(Colors.red).spin(180).color;
@@ -240,7 +240,7 @@ Colors.red.compliment;
 
 ### mix
 
-`mix: function(toColor, amount = 10) -> TinyColor`. Blends the color with another color a given amount, from 0 - 100, default 50.
+`mix: function(toColor, amount = 10) -> TinyColor`. Blends the color with another color a given amount, from `0` to `100`, default `50`.
 
 ```dart
 TinyColor(Colors.red).mix(TinyColor(Colors.yellow, 20)).color;
@@ -252,7 +252,7 @@ Colors.red.mix(Colors.yellow, 20);
 
 ### clone
 
-`clone: function() -> TinyColor`. Instantiate a new TinyColor object with the same color. Any changes to the new one won't affect the old one.
+`clone: function() -> TinyColor`. Instantiate a new `TinyColor` object with the same color. Any changes to the new one won't affect the old one.
 
 ```dart
 final color1 = new TinyColor(Colors.red);
