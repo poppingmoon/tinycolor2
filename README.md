@@ -14,6 +14,8 @@ final TinyColor tinyColor = TinyColor(Colors.green);
 ```
 Now you can also use the package to extend the native `Color` class with all the same features, but simpler. To use extension update, make sure to change envieronment sdk version in pubspec like this: ` sdk: ">=2.6.0 <3.0.0"`
 
+## Constructors
+
 ### From a Hex String
 
 The package uses [Pigment](https://pub.dartlang.org/packages/pigment) by [Bregy Malpartida Ramos](https://github.com/bregydoc/) to convert strings to `Color`
@@ -28,21 +30,21 @@ TinyColor.fromString('#FE5567');
 TinyColor.fromRGB(r: 255, g: 255, b:255);
 ```
 
-### From HSL color
+### From `HslColor`
 
 ```dart
 HslColor color = HslColor(h: 250, s: 57, l: 30);
 TinyColor.fromHSL(color);
 ```
 
-### From HSV color
+### From `HSVColor`
 
 ```dart
 HSVColor color = HSVColor(h: 250, s: 57, v: 30);
 TinyColor.fromHSV(color);
 ```
 
-### From Flutter's Color
+### From Flutter's `Color`
 
 ```dart
 TinyColor tinyColor = Colors.blue.toTinyColor();
