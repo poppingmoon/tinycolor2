@@ -105,22 +105,6 @@ TinyColor.fromString("#ffffff").getLuminance();
 Colors.white.luminance;
 ```
 
-### setAlpha
-
-Sets the alpha value on the current color.
-
-```dart
-final color = TinyColor(Colors.red).setAlpha(10);
-```
-
-### setOpacity
-
-Sets the opacity value on the current color.
-
-```dart
-final color = TinyColor(Colors.red).setOpacity(0.5);
-```
-
 ## Color Modification
 
 These methods manipulate the current color, and return it for chaining. For instance:
@@ -129,6 +113,22 @@ These methods manipulate the current color, and return it for chaining. For inst
 TinyColor(Colors.red).lighten().desaturate().color;
 // or with Color extension
 Colors.red.lighten().desaturate();
+```
+
+### setAlpha
+
+Sets the alpha value on the current color.
+
+```dart
+TinyColor(Colors.red).setAlpha(10);
+```
+
+### setOpacity
+
+Sets the opacity value on the current color.
+
+```dart
+TinyColor(Colors.red).setOpacity(0.5);
 ```
 
 ### lighten
