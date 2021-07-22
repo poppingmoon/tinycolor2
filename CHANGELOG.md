@@ -9,7 +9,7 @@
 
 ### Changed
 * Forked as a community version with new name `tinycolor2`
-* Null safety migration at [PR #24](https://github.com/TinyCommunity/tinycolor2/pull/24)
+* Null safety migration w/ dependency upgrade at [PR #24](https://github.com/TinyCommunity/tinycolor2/pull/24)
 * Library restructure at [PR #5](https://github.com/TinyCommunity/tinycolor2/pull/5)
 
 ### Fixed
