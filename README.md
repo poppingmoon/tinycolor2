@@ -257,7 +257,7 @@ Colors.red.mix(Colors.yellow, 20);
 `clone: function() -> TinyColor`. Instantiate a new `TinyColor` object with the same color. Any changes to the new one won't affect the old one.
 
 ```dart
-final color1 = new TinyColor(Colors.red);
+final color1 = TinyColor(Colors.red);
 final color2 = color1.clone();
 color2.setAlpha(20);
 ```
