@@ -16,7 +16,8 @@ void main() {
   test(
     "setOpacity updates opacity value of color",
     () {
-      final TinyColor color = TinyColor(const Color(0xFFFFFFFF).withOpacity(1.0));
+      final TinyColor color =
+          TinyColor(const Color(0xFFFFFFFF).withOpacity(1.0));
       color.setOpacity(0.5);
 
       // underlying dart implementation converts the opacity value to an
