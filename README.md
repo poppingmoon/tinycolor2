@@ -40,7 +40,7 @@ TinyColor.fromHSL(color);
 ### From `HSVColor`
 
 ```dart
-final HSVColor color = HSVColor(h: 250, s: 57, v: 30);
+final HSVColor color = HSVColor.fromAHSV(1.0, 250, 57, 30);
 TinyColor.fromHSV(color);
 ```
 
