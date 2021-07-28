@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.0] - TBD
+## [2.0.0] - 2021-07-28
 
 ### Added
 * `.toHex8()` at [PR #17](https://github.com/TinyCommunity/tinycolor2/pull/17)
