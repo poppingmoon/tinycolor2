@@ -40,7 +40,7 @@ TinyColor.fromHSL(color);
 ### From `HSVColor`
 
 ```dart
-final HSVColor color = HSVColor(h: 250, s: 57, v: 30);
+final HSVColor color = HSVColor.fromAHSV(1.0, 250, 57, 30);
 TinyColor.fromHSV(color);
 ```
 
@@ -64,7 +64,7 @@ final Color color = TinyColor(Colors.white).color;
 
 ### getBrightness
 
-Returns the perceived brightness of a color, from `0` to `255`, as defined by [Web Content Accessibility Guidelines (Version 1.0)](http://www.w3.org/TR/AERT#color-contrast).
+Returns the perceived brightness of a color, from `0` to `255`, as defined by [Web Content Accessibility Guidelines (Version 1.0)](https://www.w3.org/TR/AERT#color-contrast).
 
 ```dart
 TinyColor.fromString("#ffffff").getBrightness(); // 255
