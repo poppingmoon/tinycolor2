@@ -12,7 +12,7 @@ class TinyColor {
   final Color originalColor;
   Color _color;
 
-  TinyColor(this.originalColor) : _color = originalColor.clone();
+  TinyColor(this.originalColor) : _color = Color(originalColor.value);
 
   factory TinyColor.fromRGB({
     required int r,
@@ -177,8 +177,4 @@ class TinyColor {
 
   @Deprecated('Use == instead.')
   bool equals(Object other) => this == other;
-}
-
-extension _ColorExtension on Color {
-  Color clone() => Color.fromARGB(alpha, red, green, blue);
 }
