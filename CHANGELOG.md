@@ -3,6 +3,7 @@
 ## [2.0.1] - TBD
 
 ### Fixed
+* `.greyscale()` should be a method, not a property in `Color` extension at [PR #45](https://github.com/TinyCommunity/tinycolor2/pull/45)
 * Typo in `.complement()` naming at [PR #43](https://github.com/TinyCommunity/tinycolor2/pull/43)
 * `alpha` range should be `0`-`255` at [PR #39](https://github.com/TinyCommunity/tinycolor2/pull/39)
 
