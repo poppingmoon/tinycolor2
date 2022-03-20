@@ -32,10 +32,10 @@ The package uses [Pigment](https://pub.dartlang.org/packages/pigment) by [Bregy 
 TinyColor.fromString('#FE5567');
 ```
 
-### From `HslColor`
+### From `HSLColor`
 
 ```dart
-final HslColor color = HslColor(h: 250, s: 57, l: 30);
+final HSLColor color = HSLColor.fromAHSL(1.0, 250, 57, 30);
 TinyColor.fromHSL(color);
 ```
 
