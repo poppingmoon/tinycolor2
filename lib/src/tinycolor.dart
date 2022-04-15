@@ -1,7 +1,6 @@
 import 'dart:math' as math;
-import 'dart:ui' show Color;
 
-import 'package:flutter/painting.dart' show HSLColor, HSVColor;
+import 'package:flutter/painting.dart' show Color, HSLColor, HSVColor;
 import 'package:pigment/pigment.dart';
 
 import 'conversion.dart';
@@ -11,7 +10,10 @@ class TinyColor {
   final Color originalColor;
   Color _color;
 
+  @Deprecated('Use TinyColor.fromColor() instead.')
   TinyColor(this.originalColor) : _color = Color(originalColor.value);
+
+  TinyColor.fromColor(this.originalColor) : _color = Color(originalColor.value);
 
   @Deprecated('Use TinyColor(Color.fromARGB(a, r, g, b)) instead.')
   factory TinyColor.fromRGB({
@@ -20,14 +22,22 @@ class TinyColor {
     required int b,
     int a = 255,
   }) =>
-      TinyColor(Color.fromARGB(a, r, g, b));
+      TinyColor.fromColor(Color.fromARGB(a, r, g, b));
 
+  @Deprecated('Use TinyColor.fromHSLColor() instead.')
   factory TinyColor.fromHSL(HSLColor hsl) => TinyColor(hsl.toColor());
 
-  factory TinyColor.fromHSV(HSVColor hsv) => TinyColor(hsv.toColor());
+  factory TinyColor.fromHSLColor(HSLColor hsl) =>
+      TinyColor.fromColor(hsl.toColor());
+
+  @Deprecated('Use TinyColor.fromHSVColor() instead.')
+  factory TinyColor.fromHSV(HSVColor hsl) => TinyColor.fromHSVColor(hsl);
+
+  factory TinyColor.fromHSVColor(HSVColor hsv) =>
+      TinyColor.fromColor(hsv.toColor());
 
   factory TinyColor.fromString(String string) =>
-      TinyColor(Pigment.fromString(string));
+      TinyColor.fromColor(Pigment.fromString(string));
 
   bool isDark() => getBrightness() < 128.0;
 
@@ -48,16 +58,22 @@ class TinyColor {
     return this;
   }
 
-  HSVColor toHsv() => HSVColor.fromColor(_color);
+  @Deprecated('Use TinyColor.toHSVColor() instead.')
+  HSVColor toHsv() => toHSVColor();
 
+  HSVColor toHSVColor() => HSVColor.fromColor(_color);
+
+  @Deprecated('Use TinyColor.toHSLColor() instead.')
   HSLColor toHsl() => HSLColor.fromColor(_color);
+
+  HSLColor toHSLColor() => HSLColor.fromColor(_color);
 
   String toHex8() => _color.value.toRadixString(16).padLeft(8, '0');
 
-  TinyColor clone() => TinyColor(_color);
+  TinyColor clone() => TinyColor.fromColor(_color);
 
   TinyColor lighten([int amount = 10]) {
-    final hsl = toHsl();
+    final hsl = toHSLColor();
     final lightness = clamp01(hsl.lightness + amount / 100);
     return TinyColor.fromHSL(hsl.withLightness(lightness));
   }
@@ -87,11 +103,11 @@ class TinyColor {
         ),
       ),
     );
-    return TinyColor(color);
+    return TinyColor.fromColor(color);
   }
 
   TinyColor darken([int amount = 10]) {
-    final hsl = toHsl();
+    final hsl = toHSLColor();
     final lightness = clamp01(hsl.lightness - amount / 100);
     return TinyColor.fromHSL(hsl.withLightness(lightness));
   }
@@ -107,13 +123,13 @@ class TinyColor {
       );
 
   TinyColor desaturate([int amount = 10]) {
-    final hsl = toHsl();
+    final hsl = toHSLColor();
     final saturation = clamp01(hsl.saturation - amount / 100);
     return TinyColor.fromHSL(hsl.withSaturation(saturation));
   }
 
   TinyColor saturate([int amount = 10]) {
-    final hsl = toHsl();
+    final hsl = toHSLColor();
     final saturation = clamp01(hsl.saturation + amount / 100);
     return TinyColor.fromHSL(hsl.withSaturation(saturation));
   }
@@ -121,7 +137,7 @@ class TinyColor {
   TinyColor greyscale() => desaturate(100);
 
   TinyColor spin(double amount) {
-    final hsl = toHsl();
+    final hsl = toHSLColor();
     final hue = (hsl.hue + amount) % 360;
     return TinyColor.fromHSL(hsl.withHue(hue < 0 ? 360 + hue : hue));
   }
@@ -134,11 +150,11 @@ class TinyColor {
       ((toColor.green - _color.green) * p + _color.green).round(),
       ((toColor.blue - _color.blue) * p + _color.blue).round(),
     );
-    return TinyColor(color);
+    return TinyColor.fromColor(color);
   }
 
   TinyColor complement() {
-    final hsl = toHsl();
+    final hsl = toHSLColor();
     final hue = (hsl.hue + 180) % 360;
     return TinyColor.fromHSL(hsl.withHue(hue));
   }

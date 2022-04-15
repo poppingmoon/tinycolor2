@@ -10,7 +10,7 @@ A `TinyColor` receives a `Color` as parameter.
 ```dart
 import 'package:tinycolor2/tinycolor2.dart';
 
-final TinyColor tinyColor = TinyColor(Colors.green);
+final TinyColor tinyColor = TinyColor.fromColor(Colors.green);
 ```
 Now you can also use the package to extend the native `Color` class with all the same features, but simpler. To use extension update, make sure to change envieronment sdk version in pubspec like this: ` sdk: ">=2.6.0 <3.0.0"`
 
@@ -19,7 +19,7 @@ Now you can also use the package to extend the native `Color` class with all the
 ### From Flutter's `Color`
 
 ```dart
-TinyColor(Colors.blue);
+TinyColor.fromColor(Colors.blue);
 // or with Color extension
 Colors.blue.toTinyColor();
 ```
@@ -36,14 +36,14 @@ TinyColor.fromString('#FE5567');
 
 ```dart
 final HSLColor color = HSLColor.fromAHSL(1.0, 250, 57, 30);
-TinyColor.fromHSL(color);
+TinyColor.fromHSLColor(color);
 ```
 
 ### From `HSVColor`
 
 ```dart
 final HSVColor color = HSVColor.fromAHSV(1.0, 250, 57, 30);
-TinyColor.fromHSV(color);
+TinyColor.fromHSVColor(color);
 ```
 
 ## Properties
@@ -53,7 +53,7 @@ TinyColor.fromHSV(color);
 Returns the flutter `Color` after operations 
 
 ```dart
-final Color color = TinyColor(Colors.white).color;
+final Color color = TinyColor.fromColor(Colors.white).color;
 ```
 
 ## Methods
@@ -106,7 +106,7 @@ Colors.white.luminance;
 These methods manipulate the current color, and return it for chaining. For instance:
 
 ```dart
-TinyColor(Colors.red).lighten().desaturate().color;
+TinyColor.fromColor(Colors.red).lighten().desaturate().color;
 // or with Color extension
 Colors.red.lighten().desaturate();
 ```
@@ -116,7 +116,7 @@ Colors.red.lighten().desaturate();
 Sets the alpha value on the current color, from `0` to `255`.
 
 ```dart
-TinyColor(Colors.red).setAlpha(10);
+TinyColor.fromColor(Colors.red).setAlpha(10);
 ```
 
 ### setOpacity
@@ -124,7 +124,7 @@ TinyColor(Colors.red).setAlpha(10);
 Sets the opacity value on the current color, from `0.0` to `1.0`.
 
 ```dart
-TinyColor(Colors.red).setOpacity(0.5);
+TinyColor.fromColor(Colors.red).setOpacity(0.5);
 ```
 
 ### lighten
@@ -132,8 +132,8 @@ TinyColor(Colors.red).setOpacity(0.5);
 `lighten: function(amount = 10) -> TinyColor`. Lighten the color a given amount, from `0` to `100`. Providing `100` will always return white.
 
 ```dart
-TinyColor(Colors.red).lighten().color;
-TinyColor(Colors.red).lighten(100).color;
+TinyColor.fromColor(Colors.red).lighten().color;
+TinyColor.fromColor(Colors.red).lighten(100).color;
 // or with Color extension
 Colors.red.lighten(50);
 ```
@@ -143,7 +143,7 @@ Colors.red.lighten(50);
 `brighten: function(amount = 10) -> TinyColor`. Brighten the color a given amount, from `0` to `100`.
 
 ```dart
-TinyColor(Colors.black).brighten().color;
+TinyColor.fromColor(Colors.black).brighten().color;
 // or with Color extension
 Colors.black.brighten(50);
 ```
@@ -153,8 +153,8 @@ Colors.black.brighten(50);
 `darken: function(amount = 10) -> TinyColor`. Darken the color a given amount, from `0` to `100`. Providing `100` will always return black.
 
 ```dart
-TinyColor(Colors.red).darken().color;
-TinyColor(Colors.red).darken(100).color;
+TinyColor.fromColor(Colors.red).darken().color;
+TinyColor.fromColor(Colors.red).darken(100).color;
 // or with Color extension
 Colors.red.darken(50);
 ```
@@ -164,8 +164,8 @@ Colors.red.darken(50);
 Mix the color with pure white, from `0` to `100`. Providing `0` will do nothing, providing `100` will always return white.
 
 ```dart
-TinyColor(Color.red).tint().color;
-TinyColor(Color.red).tint(100).color;
+TinyColor.fromColor(Color.red).tint().color;
+TinyColor.fromColor(Color.red).tint(100).color;
 // or with Color extension
 Colors.red.tint(50);
 ```
@@ -175,8 +175,8 @@ Colors.red.tint(50);
 Mix the color with pure black, from `0` to `100`. Providing `0` will do nothing, providing `100` will always return black.
 
 ```dart
-TinyColor(Colors.red).shade().color;
-TinyColor(Colors.red).shade(100).color;
+TinyColor.fromColor(Colors.red).shade().color;
+TinyColor.fromColor(Colors.red).shade(100).color;
 // or with Color extension
 Colors.red.shade(50);
 ```
@@ -186,8 +186,8 @@ Colors.red.shade(50);
 `desaturate: function(amount = 10) -> TinyColor`. Desaturate the color a given amount, from `0` to `100`. Providing `100` will is the same as calling `greyscale`.
 
 ```dart
-TinyColor(Colors.red).desaturate().color;
-TinyColor(Colors.red).desaturate(100).color;
+TinyColor.fromColor(Colors.red).desaturate().color;
+TinyColor.fromColor(Colors.red).desaturate(100).color;
 // or with Color extension
 Colors.red.desaturate(50);
 ```
@@ -197,7 +197,7 @@ Colors.red.desaturate(50);
 `saturate: function(amount = 10) -> TinyColor`. Saturate the color a given amount, from `0` to `100`.
 
 ```dart
-TinyColor(Colors.red).saturate().color;
+TinyColor.fromColor(Colors.red).saturate().color;
 // or with Color extension
 Colors.red.saturate(50);
 ```
@@ -207,7 +207,7 @@ Colors.red.saturate(50);
 `greyscale: function() -> TinyColor`. Completely desaturates a color into greyscale. Same as calling `desaturate(100)`.
 
 ```dart
-TinyColor(Colors.red).greyscale().color;
+TinyColor.fromColor(Colors.red).greyscale().color;
 // or with Color extension
 Colors.red.greyscale();
 ```
@@ -217,13 +217,13 @@ Colors.red.greyscale();
 `spin: function(amount) -> TinyColor`. Spin the hue a given amount, from `-360` to `360`. Calling with `0`, `360`, or `-360` will do nothing (since it sets the hue back to what it was before).
 
 ```dart
-TinyColor(Colors.red).spin(180).color;
+TinyColor.fromColor(Colors.red).spin(180).color;
 // or with Color extension
 Colors.red.spin(180);
 
 // spin(0) and spin(360) do nothing
-TinyColor(Colors.red).spin(0).color;
-TinyColor(Colors.red).spin(360).color;
+TinyColor.fromColor(Colors.red).spin(0).color;
+TinyColor.fromColor(Colors.red).spin(360).color;
 ```
 
 ### complement
@@ -231,7 +231,7 @@ TinyColor(Colors.red).spin(360).color;
 `complement: function() -> TinyColor`. Returns the complementary color for dynamic matching.
 
 ```dart
-TinyColor(Colors.red).complement().color;
+TinyColor.fromColor(Colors.red).complement().color;
 // or with Color extension
 Colors.red.complement();
 ```
@@ -241,7 +241,7 @@ Colors.red.complement();
 `mix: function(toColor, amount = 50) -> TinyColor`. Blends the color with another color a given amount, from `0` to `100`.
 
 ```dart
-TinyColor(Colors.red).mix(TinyColor(Colors.yellow, 20)).color;
+TinyColor.fromColor(Colors.red).mix(TinyColor.fromColor(Colors.yellow, 20)).color;
 // or with Color extension
 Colors.red.mix(Colors.yellow, 20);
 ```
@@ -253,7 +253,7 @@ Colors.red.mix(Colors.yellow, 20);
 `clone: function() -> TinyColor`. Instantiate a new `TinyColor` object with the same color. Any changes to the new one won't affect the old one.
 
 ```dart
-final TinyColor color1 = TinyColor(Colors.red);
+final TinyColor color1 = TinyColor.fromColor(Colors.red);
 final TinyColor color2 = color1.clone();
 color2.setAlpha(20);
 ```
@@ -263,8 +263,8 @@ color2.setAlpha(20);
 `==: function(Object) -> bool`. Compares if `[Object]` is the same `TinyColor` object.
 
 ```dart
-final TinyColor color1 = TinyColor(Colors.blue);
-final TinyColor color2 = TinyColor(Colors.yellow);
+final TinyColor color1 = TinyColor.fromColor(Colors.blue);
+final TinyColor color2 = TinyColor.fromColor(Colors.yellow);
 if (color1 == color2) return "same";
 else return "different";
 ```
