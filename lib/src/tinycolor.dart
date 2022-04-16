@@ -15,7 +15,7 @@ class TinyColor {
 
   TinyColor.fromColor(this.originalColor) : _color = Color(originalColor.value);
 
-  @Deprecated('Use TinyColor(Color.fromARGB(a, r, g, b)) instead.')
+  @Deprecated('Use TinyColor.fromColor(Color.fromARGB(a, r, g, b)) instead.')
   factory TinyColor.fromRGB({
     required int r,
     required int g,
@@ -25,7 +25,7 @@ class TinyColor {
       TinyColor.fromColor(Color.fromARGB(a, r, g, b));
 
   @Deprecated('Use TinyColor.fromHSLColor() instead.')
-  factory TinyColor.fromHSL(HSLColor hsl) => TinyColor(hsl.toColor());
+  factory TinyColor.fromHSL(HSLColor hsl) => TinyColor.fromColor(hsl.toColor());
 
   factory TinyColor.fromHSLColor(HSLColor hsl) =>
       TinyColor.fromColor(hsl.toColor());
@@ -57,6 +57,8 @@ class TinyColor {
     _color = _color.withOpacity(opacity);
     return this;
   }
+
+  Color toColor() => Color(_color.value);
 
   @Deprecated('Use TinyColor.toHSVColor() instead.')
   HSVColor toHsv() => toHSVColor();
@@ -159,7 +161,7 @@ class TinyColor {
     return TinyColor.fromHSL(hsl.withHue(hue));
   }
 
-  Color get color => _color;
+  Color get color => toColor();
 
   @override
   bool operator ==(Object other) =>
