@@ -78,12 +78,13 @@ class TinyColor {
     final p = RangeError.checkValueInInterval(amount, 0, 100, 'amount') / 100;
     final hsl = toHSLColor();
     final lightness = clamp01(hsl.lightness + p);
-    return TinyColor.fromHSL(hsl.withLightness(lightness));
+    _color = hsl.withLightness(lightness).toColor();
+    return this;
   }
 
   TinyColor brighten([int amount = 10]) {
     final p = RangeError.checkValueInInterval(amount, 0, 100, 'amount') / 100;
-    final color = Color.fromARGB(
+    _color = Color.fromARGB(
       _color.alpha,
       math.max(
         0,
@@ -107,14 +108,15 @@ class TinyColor {
         ),
       ),
     );
-    return TinyColor.fromColor(color);
+    return this;
   }
 
   TinyColor darken([int amount = 10]) {
     final p = RangeError.checkValueInInterval(amount, 0, 100, 'amount') / 100;
     final hsl = toHSLColor();
     final lightness = clamp01(hsl.lightness - p);
-    return TinyColor.fromHSL(hsl.withLightness(lightness));
+    _color = hsl.withLightness(lightness).toColor();
+    return this;
   }
 
   TinyColor tint([int amount = 10]) => mix(
@@ -131,14 +133,16 @@ class TinyColor {
     final p = RangeError.checkValueInInterval(amount, 0, 100, 'amount') / 100;
     final hsl = toHSLColor();
     final saturation = clamp01(hsl.saturation - p);
-    return TinyColor.fromHSL(hsl.withSaturation(saturation));
+    _color = hsl.withSaturation(saturation).toColor();
+    return this;
   }
 
   TinyColor saturate([int amount = 10]) {
     final p = RangeError.checkValueInInterval(amount, 0, 100, 'amount') / 100;
     final hsl = toHSLColor();
     final saturation = clamp01(hsl.saturation + p);
-    return TinyColor.fromHSL(hsl.withSaturation(saturation));
+    _color = hsl.withSaturation(saturation).toColor();
+    return this;
   }
 
   TinyColor greyscale() => desaturate(100);
@@ -146,24 +150,26 @@ class TinyColor {
   TinyColor spin(double amount) {
     final hsl = toHSLColor();
     final hue = (hsl.hue + amount) % 360;
-    return TinyColor.fromHSL(hsl.withHue(hue < 0 ? 360 + hue : hue));
+    _color = hsl.withHue(hue < 0 ? 360 + hue : hue).toColor();
+    return this;
   }
 
   TinyColor mix(Color toColor, [int amount = 50]) {
     final p = RangeError.checkValueInInterval(amount, 0, 100, 'amount') / 100;
-    final color = Color.fromARGB(
+    _color = Color.fromARGB(
       ((toColor.alpha - _color.alpha) * p + _color.alpha).round(),
       ((toColor.red - _color.red) * p + _color.red).round(),
       ((toColor.green - _color.green) * p + _color.green).round(),
       ((toColor.blue - _color.blue) * p + _color.blue).round(),
     );
-    return TinyColor.fromColor(color);
+    return this;
   }
 
   TinyColor complement() {
     final hsl = toHSLColor();
     final hue = (hsl.hue + 180) % 360;
-    return TinyColor.fromHSL(hsl.withHue(hue));
+    _color = hsl.withHue(hue).toColor();
+    return this;
   }
 
   Color get color => toColor();
