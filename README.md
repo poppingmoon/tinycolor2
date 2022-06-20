@@ -12,7 +12,7 @@ import 'package:tinycolor2/tinycolor2.dart';
 
 final TinyColor tinyColor = TinyColor.fromColor(Colors.green);
 ```
-Now you can also use the package to extend the native `Color` class with all the same features, but simpler. To use extension update, make sure to change envieronment sdk version in pubspec like this: ` sdk: ">=2.6.0 <3.0.0"`
+Now you can also use the package to extend the native `Color` class with all the same features, but simpler.
 
 ## Constructors
 
@@ -20,8 +20,6 @@ Now you can also use the package to extend the native `Color` class with all the
 
 ```dart
 TinyColor.fromColor(Colors.blue);
-// or with Color extension
-Colors.blue.toTinyColor();
 ```
 
 ### From a Hex String
@@ -76,7 +74,7 @@ final HSVColor color = TinyColor.fromColor(Colors.white).toHSVColor();
 
 ### Properties
 
-### `.isLight()`
+#### `.isLight()`
 
 Return a boolean indicating whether the color's perceived brightness is light.
 
@@ -87,7 +85,7 @@ TinyColor.fromString("#000000").isLight(); // false
 Colors.white.isLight;  // true
 ```
 
-### `.isDark()`
+#### `.isDark()`
 
 Return a boolean indicating whether the color's perceived brightness is dark.
 
@@ -98,7 +96,7 @@ TinyColor.fromString("#000000").isDark(); // true
 Colors.white.isDark;  // false
 ```
 
-### `.getBrightness()`
+#### `.getBrightness()`
 
 Returns the perceived brightness of a color, from `0` to `255`, as defined by [Web Content Accessibility Guidelines (Version 1.0)](https://www.w3.org/TR/AERT#color-contrast).
 
@@ -109,7 +107,7 @@ TinyColor.fromString("#000000").getBrightness(); // 0
 Colors.grey.brightness;  // 127
 ```
 
-### `.getLuminance()`
+#### `.getLuminance()`
 
 Return the perceived luminance of a color, a shorthand for flutter `Color.computeLuminance()`
 
@@ -285,4 +283,21 @@ Colors.red.complement();
 TinyColor.fromColor(Colors.red).mix(TinyColor.fromColor(Colors.yellow, 20)).color;
 // or with Color extension
 Colors.red.mix(Colors.yellow, 20);
+```
+
+## Extensions
+
+All methods listed above are included in extensions. Note that some methods has changed to return a `bool` or `double` value instead to match with Dart approach, and the rest would return its original class type instead of `TinyColor`.
+
+### `Color`
+
+```dart
+final TinyColor color = Colors.black.toTinyColor();
+final HSVColor hsv = Colors.white.toHSVColor();
+final HSLColor hsl = Colors.white.toHSLColor();
+final bool isDark = Colors.yellow.isDark;
+final bool isLight = Colors.red.isLight;
+final double luminance = Colors.blue.luminance;
+final double brightness = Colors.blue.brightness;
+final Color newColor = Colors.green.mix(Colors.white, 50);
 ```
