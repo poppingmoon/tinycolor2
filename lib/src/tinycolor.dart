@@ -66,7 +66,18 @@ class TinyColor {
   @Deprecated('Use TinyColor.toHSLColor() instead.')
   HSLColor toHsl() => HSLColor.fromColor(_color);
 
-  HSLColor toHSLColor() => HSLColor.fromColor(_color);
+  HSLColor toHSLColor() {
+    if (_color.red == _color.green && _color.green == _color.blue) {
+      return HSLColor.fromAHSL(
+        _color.alpha / 0xff,
+        0.0,
+        0.0,
+        _color.red / 0xff,
+      );
+    } else {
+      return HSLColor.fromColor(_color);
+    }
+  }
 
   String toHex8() => _color.value.toRadixString(16).padLeft(8, '0');
 
